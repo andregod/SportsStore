@@ -1,7 +1,11 @@
+using SportsStore.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<ISportsStoreRepository, FakeRepository>();
 
 var app = builder.Build();
 
