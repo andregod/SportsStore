@@ -1,9 +1,14 @@
+using Microsoft.EntityFrameworkCore;
 using SportsStore.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<SportsStoreDbContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("SportsStoreConnectionString")));
+
 
 builder.Services.AddTransient<ISportsStoreRepository, FakeRepository>();
 
